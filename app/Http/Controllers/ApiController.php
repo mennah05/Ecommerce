@@ -10,6 +10,8 @@ use App\Models\disease;
 use App\Models\disease_category;
 use App\Models\disgallary;
 use App\Models\disvideo;
+use App\Models\order;
+use App\Models\ordereditem;
 use App\Models\product;
 use App\Models\product_category;
 use App\Models\productdis;
@@ -329,19 +331,23 @@ class ApiController extends Controller
 
     public function AddCart(Request $req)
     {
-        $addtocart = cart::create([
-            'customer_id' => auth()->user()->id,
-            'unit_id' => $req->unit_id,
-            'quantity' => $req->quantity,
-        ]);
-        if ($addtocart) {
+        $cart = cart::where('customer_id', auth()->user()->id)->where('unit_id', $req->unit_id)->first();
+        if ($cart) {
+            cart::where('id', $cart->id)->update([
+                'quantity' => $cart->quantity + $req->quantity,
+            ]);
             return response()->json([
-                'message' => ' successfully added to cart',
+                'message' => 'cart updated',
                 'status_code' => '01'
             ], 200);
         } else {
+            cart::create([
+                'customer_id' => auth()->user()->id,
+                'unit_id' => $req->unit_id,
+                'quantity' => $req->quantity,
+            ]);
             return response()->json([
-                'message' => ' something went wrong',
+                'message' => 'added to cart',
                 'status_code' => '00'
             ], 400);
         }
@@ -350,14 +356,14 @@ class ApiController extends Controller
     public function CartList($cust_id)
     {
         $cart = cart::join('units', 'carts.unit_id', '=', 'units.id')
-       ->join('products', 'units.prod_id', '=', 'products.id')
-    ->select('carts.*', 'units.*', 'products.*')
-    ->where('carts.customer_id',$cust_id)
-    ->get();
+            ->join('products', 'units.prod_id', '=', 'products.id')
+            ->select('carts.*', 'units.*', 'products.*')
+            ->where('carts.customer_id', $cust_id)
+            ->get();
 
         if ($cart == '[]') {
             return response()->json([
-                'message' => 'error',
+                'message' => 'no items in cart',
                 'status_code' => '00'
             ], 400);
         } else {
@@ -368,10 +374,10 @@ class ApiController extends Controller
             ], 200);
         }
     }
-    // juyuyukki
 
-    public function CartItemDel(Request $req){
-        $cartitem=cart::find($req->id)->delete();
+    public function CartItemDel(Request $req)
+    {
+        $cartitem = cart::find($req->id)->delete();
 
         if ($cartitem) {
             return response()->json([
@@ -383,6 +389,88 @@ class ApiController extends Controller
                 'message' => ' something went wrong',
                 'status_code' => '00'
             ], 400);
+        }
+    }
+
+    public function CartItemsCount(){
+       $cartItemcount= cart::where('customer_id',auth()->user()->id)->sum('quantity');
+
+       if ($cartItemcount == '[]') {
+        return response()->json([
+            'message' => 'no items in cart',
+            'status_code' => '00'
+        ], 400);
+    } else {
+        return response()->json([
+            'cart_items_count' => $cartItemcount,
+            'message' => 'success',
+            'status_code' => '01'
+        ], 200);
+    }
+    }
+
+    public function Orders(Request $req)
+    {
+
+        $orders = order::create([
+            'customer_id' => auth()->user()->id,
+            'address_id' => $req->address_id,
+            'reference_id' => $req->reference_id,
+            'payment_type' => $req->payment_type,
+            'ordered_on' => date('Y-m-d'),
+        ]);
+
+        $lastinsertedrow = order::latest()->first();
+        $cust_id = auth()->user()->id;
+        $order_id = $lastinsertedrow->id;
+        $cartItems = cart::where('customer_id', $cust_id)->get();
+
+        foreach ($cartItems as $item) {
+            $unit = unit::where('id', $item->unit_id)->first();
+            $data = new ordereditem();
+
+            $data->order_id = $order_id;
+            $data->customer_id = $cust_id;
+            $data->unit_id = $item->unit_id;
+            $data->quantity = $item->quantity;
+            $data->amount = $unit->offer_price;   ///offerprice on null
+
+            $data->save();
+            cart::where('id', $item->id)->delete();
+        }
+        if ($orders) {
+            return response()->json([
+                'message' => 'order successfull',
+                'status_code' => '01'
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => ' something went wrong',
+                'status_code' => '00'
+            ], 400);
+        }
+    }
+
+    public function OrderedList($order_id)
+    {
+
+        $ordereditems = ordereditem::join('units', 'ordereditems.unit_id', '=', 'units.id')
+            ->join('products', 'units.prod_id', '=', 'products.id')
+            ->select('ordereditems.*', 'units.*', 'products.*')
+            ->where('ordereditems.order_id', $order_id)
+            ->get();
+
+        if ($ordereditems == '[]') {
+            return response()->json([
+                'message' => 'error',
+                'status_code' => '00'
+            ], 400);
+        } else {
+            return response()->json([
+                'ordered_items' => $ordereditems,
+                'message' => 'success',
+                'status_code' => '01'
+            ], 200);
         }
     }
 }

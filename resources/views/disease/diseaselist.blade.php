@@ -66,7 +66,7 @@ Disease
                          <td>{{$disease->status}}</td>
                          <td><a href="{{ route('edit.dis',$disease->id)}}"><button class="btn btn-info">edit</button></a></td>
                          <td><a href="{{ route('dis.video',$disease->id)}}"><button class="btn btn-warning">Video</button></a></td>
-                         <td><a href="{{ route('dis.gallery',$disease->id)}}"><button class="btn btn-success">Gallery</button></a></td>
+                         <td><a href="{{ route('dis.gallery',$disease->id)}}"><button class="btn btn-success">Gallary</button></a></td>
                          <td><a href="{{ route('productsdesease',$disease->id)}}"><button class="btn btn-primary">products</button></a></td>
                          <td><a href="{{ route('disdetails',$disease->id)}}"><button class="btn btn-dark">Details</button></a></td>
                     </tr>

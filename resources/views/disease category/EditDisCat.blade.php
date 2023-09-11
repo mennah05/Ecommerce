@@ -233,7 +233,7 @@
 
         $('.deserror2').hide();
 
-        
+
 
         if ($('#Featrd').prop('checked')) {
    var isfeatured = 1;
@@ -289,7 +289,7 @@
                 if (data['success']) {
 
                     Swal.fire({
-                        title: 'Category Editted Successfully',
+                        title: 'Category Edited Successfully',
                         // text: "You won't be able to revert this!",
                         icon: 'success',
                         // showCancelButton: true,

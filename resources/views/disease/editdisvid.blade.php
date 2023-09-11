@@ -249,7 +249,7 @@
                     if (data['success']) {
 
                         Swal.fire({
-                            title: 'Editted  Successfully',
+                            title: 'Edited  Successfully',
                             // text: "You won't be able to revert this!",
                             icon: 'success',
                             // showCancelButton: true,

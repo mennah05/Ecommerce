@@ -35,6 +35,13 @@ Route::get('customer-address-details',[ApiController::class,'CustAddrssDetails']
 Route::post('add-to-cart/{id}',[ApiController::class,'AddCart']);
 Route::get('cart-list/{cust_id}',[ApiController::class,'CartList']);
 Route::post('cart-item-delete/{id}',[ApiController::class,'CartItemDel']);
+Route::get('cart-items-count',[ApiController::class,'CartItemsCount']);
+
+
+//orders
+Route::post('place-orders',[ApiController::class,'Orders']);
+Route::get('ordered-list/{order_id}',[ApiController::class,'OrderedList']);
+
 
 
 
