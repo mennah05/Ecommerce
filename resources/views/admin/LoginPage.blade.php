@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Administrator | Log in</title>
-  <link rel="icon" type="image/x-icon" href="{{ asset('admin/img/logo/login.png')}}">
+  <link rel="icon" type="image/x-icon" href="{{ asset('homeweb/images/Logo-main.png')}}">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -16,7 +16,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="{{ asset('admin/css/style.css')}}">
-  
+
 </head>
 <style type="text/css">
   .wave{
@@ -28,37 +28,37 @@
 }
 
   @media screen and (max-width: 900px){
- 
+
 
   .wave{
     display: none;
   }
-   
+
 }
 
 
 </style>
 <body class="hold-transition login-page">
-  
+
   <div class="container-fluid">
-  
+
                 <div class="col-left">
                     <div class="login-box" >
 
   <!-- <div class="login-logo">
-    <a><b><img src="{{ asset('admin/img/logo/logo2.png')}}" alt="logo" style="width: 70%;"></b></a>
+    <a><b><img src="{{ asset('homeweb/images/Logo-main.png')}}" alt="logo" style="width: 70%;"></b></a>
   </div> -->
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <center>
-      <img src="{{ asset('admin/img/logo/login.png')}}" alt="logo" style="width: 60%;">
+      <img src="{{ asset('homeweb/images/Logo-main.png')}}" alt="logo" style="width: 60%;">
       </center>
       <p class="login-box-msg" style="font-size: 20px;font-weight: bold;">Administrator</p>
 
-      
+
       <form>
-        
+
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Username" name="username" id="username">
           <div class="input-group-append">
@@ -80,9 +80,9 @@
         <div class="error" style="font-weight: bold;"></div>
         <div class="success" style="font-weight: bold;"></div>
         </center>
-        
+
           <div class="row">
-              
+
           <div class="col-md-12 ">
               <div class="mb-3 text-right">
               <!-- <a href="/forgot-password">I forgot my password</a> -->
@@ -92,8 +92,8 @@
             <button type="button" class="btn yellowbtn w-100" onclick="Login()" id="a1">Sign In</button>
             <button type="button"  class="btn yellowbtn w-100" id="a2" disabled=""> <i class="fa fa-spinner fa-spin"></i>  Sign In</button>
           </div>
-      
-        
+
+
           <div class="col-md-12">
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
@@ -119,7 +119,7 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        
+
       </p>
       {{-- <p class="mb-0">
         <a href="register.html" class="text-center">Register a new membership</a>
@@ -129,9 +129,9 @@
   </div>
 </div>
                 </div>
-          
+
   </div>
-   
+
 
 <!-- /.login-box -->
 
@@ -149,12 +149,12 @@
   $('#a2').hide();
 
 $(document).keypress(function(event){
-  
+
   var keycode = (event.keyCode ? event.keyCode : event.which);
   if(keycode == '13'){
-    Login();  
+    Login();
   }
-  
+
 });
 
 function Visibility()
@@ -204,7 +204,7 @@ function Login()
    {
       var rememberStatus=0;
     }
-    
+
      $('#a1').hide();
        $('#a2').show();
 
@@ -231,7 +231,7 @@ function Login()
 
             $('#a2').hide();
        $('#a1').show();
-             
+
         }
       else if(data['err'])
         {
@@ -241,10 +241,10 @@ function Login()
            $('#a2').hide();
        $('#a1').show();
         }
-       
+
      }
    });
-   
+
 }
 
 </script>

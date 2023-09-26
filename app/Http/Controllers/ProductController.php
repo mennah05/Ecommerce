@@ -33,6 +33,7 @@ class ProductController extends Controller
             'description_mal'=>$request->pcdesmal,
             'image'=>$new_name,
             'featured'=>$request->pcfeatured,
+            'trending'=>$request->pctrending,
             'dis_order'=>$request->ordpcorderer
         ]);
 
@@ -71,6 +72,7 @@ class ProductController extends Controller
             'description_mal'=>$request->edDesMal,
             'image'=>$new_name1,
             'featured'=>$request->edFeatrd,
+            'trending'=>$request->edTrndng,
             'dis_order'=>$request->edDisOrder,
             'status'=>$request->pcstatus
 
@@ -227,17 +229,48 @@ class ProductController extends Controller
         return view('products.unitadd',['header'=>$header,'id'=>$id]);
     }
     public function SaveUnit(Request $request){
-        $unitsave=unit::create([
-            'prod_id'=>$request->id,
-            'name'=>$request->unitname,
-            'price'=>$request->unitprice,
-            'offer_price'=>$request->unitop,
-        ]);
+        if($request->def_item==1)
+        {
+            if(unit::where('prod_id',$request->id)->where('default',1)->exists())
+            {
+                unit::where('prod_id',$request->id)->where('default',1)->update([
 
-        if ($unitsave) {
+                    'default'=>0
+                ]);
+                $unitsave=unit::create([
+                    'prod_id'=>$request->id,
+                    'name'=>$request->unitname,
+                    'price'=>$request->unitprice,
+                    'offer_price'=>$request->unitop,
+                    'default'=>$request->def_item,
+                ]);
+                $data['success']= 'success';
+
+            }
+            else
+            {
+                $unitsave=unit::create([
+                    'prod_id'=>$request->id,
+                    'name'=>$request->unitname,
+                    'price'=>$request->unitprice,
+                    'offer_price'=>$request->unitop,
+                    'default'=>$request->def_item,
+                ]);
+                $data['success']= 'success';
+
+            }
+        }
+        else
+        {
+            $unitsave=unit::create([
+                'prod_id'=>$request->id,
+                'name'=>$request->unitname,
+                'price'=>$request->unitprice,
+                'offer_price'=>$request->unitop,
+                'default'=>$request->def_item,
+            ]);
             $data['success']= 'success';
-        }else {
-            $data['error']= 'error';
+
         }
         echo json_encode($data);
     }
@@ -247,19 +280,43 @@ class ProductController extends Controller
         return view('products.unitedit',compact('uni'),['header'=>$header]);
     }
     public function updateUnit(Request $request){
-        unit::where('id',$request->unid)->first();
-        $unitupdate=unit::find($request->unid)->update([
-            'name'=>$request->edunitname,
-            'price'=>$request->edunitprice,
-            'offer_price'=>$request->edunitop,
-            'status'=>$request->unistatus,
-        ]);
+        if ($request->def_item==0) {
+            if (unit::where('prod_id',$request->id)->where('default',0)->exists()) {
 
-        if ($unitupdate) {
-            $data['success']= 'success';
+                unit::where('prod_id',$request->id)->where('default',0)->update([
+                    'default'=>1
+                ]);
+                $unitupdate=unit::find($request->unid)->update([
+                    'name'=>$request->edunitname,
+                    'price'=>$request->edunitprice,
+                    'offer_price'=>$request->edunitop,
+                    'default'=>$request->eddefault,
+                    'status'=>$request->unistatus,
+                ]);
+                $data['success']= 'success';
+            }else {
+                $unitupdate=unit::find($request->unid)->update([
+                    'name'=>$request->edunitname,
+                    'price'=>$request->edunitprice,
+                    'offer_price'=>$request->edunitop,
+                    'default'=>$request->eddefault,
+                    'status'=>$request->unistatus,
+                ]);
+                $data['success']= 'success';
+            }
         }else {
-            $data['error']= 'error';
+            $unitupdate=unit::find($request->unid)->update([
+                'name'=>$request->edunitname,
+                'price'=>$request->edunitprice,
+                'offer_price'=>$request->edunitop,
+                'default'=>$request->eddefault,
+                'status'=>$request->unistatus,
+            ]);
+            $data['success']= 'success';
         }
         echo json_encode($data);
+
+        // unit::where('id',$request->unid)->first();
+
     }
 }

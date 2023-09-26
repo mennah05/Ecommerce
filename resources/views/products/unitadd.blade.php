@@ -49,13 +49,18 @@
                                         <input type="text" id="unitop" class="form-control" value="">
                                         <div class="unitoperr" style="color: red; font-size: 14px; "></div>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Default</label>
+                                        <input type="checkbox" value="1" id="default1">
+                                        <div class="deferror" style="color: red; font-size: 14px; "></div>
+                                    </div>
                                 </div>
 
                             </div>
                             <center>
 
-                                <button type="button" class="btn yellowbtn" onclick="AddUnit()"
-                                    id="submitButton">Submit</button>
+                                <button type="button" class="btn yellowbtn" onclick="AddUnit()" id="submitButton"> Submit
+                                </button>
                                 <button type="button" class="btn yellowbtn" id="submitButton1"> <i
                                         class="fa fa-spinner fa-spin"></i> Submit</button>
 
@@ -85,9 +90,11 @@
 
     <script>
         function AddUnit() {
-            var name = $('input#unitname').val();
+
+          var name = $('input#unitname').val();
             var price = $('input#unitprice').val();
             var offer_price = $('input#unitop').val();
+            // var default = $('input#default1').val();
 
             if (name == '') {
                 $('#unitname').focus();
@@ -136,11 +143,19 @@
             $('.unitoperr').hide();
 
 
+            if ($('#default1').prop('checked')) {
+                var def_item = 1;
+            } else {
+                var def_item = 0;
+            }
+
+
             data = new FormData();
-            data.append('id', '{{$id}}');
+            data.append('id', '{{ $id }}');
             data.append('unitname', name);
             data.append('unitprice', price);
             data.append('unitop', offer_price);
+            data.append('def_item',def_item);
 
             data.append('_token', '{{ csrf_token() }}');
             $.ajax({
@@ -166,7 +181,7 @@
                             confirmButtonText: 'OK'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.href = '/units/' + '{{$id}}';
+                                window.location.href = window.location.href;
                             }
                         })
                     }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('description_mal');
             $table->string('image');
             $table->string('featured')->default(0);
+            $table->string('trending')->default(0);
             $table->string('dis_order');
             $table->string('status')->default('active');
             $table->timestamps();

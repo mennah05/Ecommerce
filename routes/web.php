@@ -1,23 +1,20 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DeseaseController;
 use App\Http\Controllers\DetailsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/',[AdminController::class,'home'])->name('admin.home');
+///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////     ADMIN      //////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+
+Route::get('/adminhome',[AdminController::class,'home'])->name('admin.home');
 Route::post('/AdminLogin' , [AdminController::class, 'login'])->name('admin.login');
 
 Route::group(['middleware'=>'admin_auth','prevent_back'],function(){
@@ -98,4 +95,55 @@ Route::group(['middleware'=>'admin_auth','prevent_back'],function(){
     Route::get('/delete-banner/{id}',[DetailsController::class,'deletebanner'])->name('delete.banner');
 
 });
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////     CLIENT SIDE      /////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+
+Route::get('/',[HomeController::class,'index'])->name('index');
+
+Route::get('shop-by-disease',[HomeController::class,'disease'])->name('disease');
+Route::get('disease-single/{id}',[HomeController::class,'disSingle'])->name('disease.single');
+
+Route::get('disease-category-single/{id}',[HomeController::class,'diseasecat'])->name('diseasecat');
+
+
+Route::get('shop-by-product',[HomeController::class,'product'])->name('product');
+Route::get('product-single/{id}',[HomeController::class,'prodSingle'])->name('product.single');
+Route::get('product-cat-single/{id}',[HomeController::class,'prodCatSingle'])->name('prodcat.single');
+Route::get('trending-products',[HomeController::class,'trndproduct'])->name('trend.product');
+Route::get('featured-products',[HomeController::class,'featrdproduct'])->name('feat.product');
+
+Route::get('about',[HomeController::class,'about'])->name('about');
+Route::get('contact',[HomeController::class,'contact'])->name('contact');
+Route::post('get-price',[HomeController::class,'getprice'])->name('getprice');
+
+
+
+
+
+Route::get('sign-in',[HomeController::class,'signin'])->name('signin');
+Route::post('do-sign-in',[HomeController::class,'check'])->name('dosignin');
+
+Route::get('sign-up',[HomeController::class,'signUp'])->name('signup');
+Route::post('register',[HomeController::class,'register'])->name('register');
+
+
+Route::group(['middleware'=>'customer_auth'],function(){                                    //////middleware
+Route::get('profile',[HomeController::class,'profile'])->name('profile');
+Route::get('update-profile',[HomeController::class,'UpdateProf'])->name('update.profile');
+Route::get('user-logout',[HomeController::class,'UserLogout'])->name('user.logout');
+
+
+Route::get('add-to-cart/{pid}',[CartController::class,'AddtoCart'])->name('addtocart');
+Route::get('cart-items',[CartController::class,'Cart'])->name('cart');
+Route::get('cart-item-delete',[CartController::class,'DelCartItem'])->name('delete.cartitem');
+
+});
+
+
+
+
 

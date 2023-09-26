@@ -35,7 +35,7 @@
                                    <div> <label>Disease Category *</label>
                                     <select id="discatdis" style="width: 100%;padding:10px;border: 1px solid #ced4da;border-radius: 0.25rem;" class="form-select mb-3" aria-label="Default select example">
                                         <option value="">Choose</option>
-                                        
+
                                         @foreach ($diseasecategories as $diseasecategory)
                                         <option value="{{$diseasecategory->id}}">{{$diseasecategory->title_eng}}</option>
                                         @endforeach
@@ -122,8 +122,6 @@
 
         function AddDis() {
             var dis_cat = $('select#discatdis').val();
-            // alert(dis_cat);
-            // return false;
             var title_eng = $('input#englishtitle').val();
             var title_mal = $('input#malaylmtitle').val();
             var title_engmal = $('input#english_maltitle').val();

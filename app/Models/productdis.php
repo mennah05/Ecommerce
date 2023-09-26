@@ -17,4 +17,9 @@ class productdis extends Model
     {
         return $this->belongsTo(product::class, 'prod_id','id');
     }
+
+    // public function GetUnit()
+    // {
+    //     return $this->belongsTo(product::class, 'prod_id','id');
+    // }
 }

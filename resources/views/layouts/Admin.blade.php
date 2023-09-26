@@ -39,7 +39,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('admin/img/logo/login.png')}}" alt="AdminLTELogo" style="width: 10%;">
+    <img class="animation__shake" src="{{ asset('homeweb/images/Logo-main.png')}}" alt="AdminLTELogo" style="width: 10%;">
   </div>
 
   @include('layouts.AdminHeader')

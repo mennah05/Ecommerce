@@ -50,6 +50,7 @@ Units
                     <th>Name</th>
                     <th>Price</th>
                     <th>Offer Price</th>
+                    <th>Default</th>
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>
@@ -61,6 +62,7 @@ Units
                         <td>{{$unit->name}}</td>
                          <td>{{$unit->price}}</td>
                          <td>{{$unit->offer_price}}</td>
+                         <td>{{$unit->default}}</td>
                          <td>{{$unit->status}}</td>
                          <td><a href="{{ route('edit.units',$unit->id)}}"><button class="btn btn-info">edit</button></a></td>
                       </tr>

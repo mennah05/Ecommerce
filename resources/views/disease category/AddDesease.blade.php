@@ -125,14 +125,13 @@
 
 
     <script>
-       
+
         function AddCat() {
             var title_eng = $('input#engtitle').val();
             var title_mal = $('input#maltitle').val();
             var title_engmal = $('input#eng_maltitle').val();
             var des_eng = CKEDITOR.instances.deseng.getData();
             var des_mal = CKEDITOR.instances.desmal.getData();
-            // var image = $('#pdf_file')[0].files[0];
             var image = $('input#pdf_file').val();
             var featured = $('#featured').val();
             var order = $('input#order').val();

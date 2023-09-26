@@ -21,12 +21,6 @@ class AdminController extends Controller
 
 
 
-
-
-
-
-
-
     public function login(Request $req)
     {
         $rememberStatus=$req->rememberStatus;

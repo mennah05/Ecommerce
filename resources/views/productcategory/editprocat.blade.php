@@ -82,9 +82,14 @@
 
                                     <div class="form-group">
                                         <label>Featured *</label>
-                                        <input type="checkbox" id="edFeatrd" value="1"  @if ($productcat->featured==1) checked
-
-                                        @endif>
+                                        <input type="checkbox" id="edFeatrd" value="1"
+                                            @if ($productcat->featured == 1) checked @endif>
+                                        <div class="featurederror" style="color: red; font-size: 14px; "></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Trending *</label>
+                                        <input type="checkbox" id="edTrndng" value="1"
+                                            @if ($productcat->trending == 1) checked @endif>
                                         <div class="featurederror" style="color: red; font-size: 14px; "></div>
                                     </div>
 
@@ -99,8 +104,11 @@
                                         <select id="pcstatus"
                                             style="width: 100%;padding:10px;border: 1px solid #ced4da;border-radius: 0.25rem;"
                                             class="form-select mb-3" aria-label="Default select example">
-                                            <option value="active"{{ $productcat->status === 'active' ? 'selected' : '' }}>Active</option>
-                                            <option value="inactive"{{ $productcat->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                            <option value="active"{{ $productcat->status === 'active' ? 'selected' : '' }}>
+                                                Active</option>
+                                            <option
+                                                value="inactive"{{ $productcat->status === 'inactive' ? 'selected' : '' }}>
+                                                Inactive</option>
                                         </select>
                                     </div>
                                     <div class="selecterror" style="color: red; font-size: 14px; "></div>
@@ -151,6 +159,7 @@
         var des_mal = CKEDITOR.instances.edDesMal.getData();
         var image = $('input#Pimg').val();
         var featured = $('#edFeatrd').val();
+        var trending = $('#edTrndng').val();
         var order = $('input#edDisOrder').val();
         var status = $('select#pcstatus').val();
 
@@ -234,11 +243,21 @@
 
         $('.deserror2').hide();
 
+
+
         if ($('#edFeatrd').prop('checked')) {
-   var isfeatured = 1;
-} else {
-    var isfeatured = 0;
-}
+            var isfeatured = 1;
+        } else {
+            var isfeatured = 0;
+        }
+        if ($('#edTrndng').prop('checked')) {
+            var istrending = 1;
+        } else {
+            var istrending = 0;
+        }
+
+
+
 
         if (order == '') {
             $('#edDisOrder').focus();
@@ -266,6 +285,7 @@
         data.append('edDesMal', des_mal);
         data.append('Pimg', $('#Pimg')[0].files[0]);
         data.append('edFeatrd', isfeatured);
+        data.append('edTrndng', istrending);
         data.append('edDisOrder', order);
         data.append('pcstatus', status);
 

@@ -48,13 +48,8 @@ Product Category
                   <tr>
                     <th>Sl.No</th>
                     <th>Title(eng)</th>
-                    {{-- <th>Title(mal)</th>
-                    <th>Title(eng & mal)</th>
-                    <th>Description(eng)</th>
-                    <th>Description(mal)</th>
-                    <th>Image</th> --}}
                     <th>Featured</th>
-                    {{-- <th>Dispaly Order</th> --}}
+                    <th>Trending</th>
                     <th>Status</th>
                     <th>Actions</th>
                     <th>More Details</th>
@@ -66,17 +61,18 @@ Product Category
                     <tr>
                         <td>{{$prodcategory->id}}</td>
                         <td>{{$prodcategory->title_eng}}</td>
-                         {{-- <td>{{$prodcategory->title_mal}}</td>
-                         <td>{{$prodcategory->title_eng_mal}}</td>
-                         <td>{!!$prodcategory->description_eng!!}</td>
-                         <td>{!!$prodcategory->description_mal!!}</td>
-                         <td><img src="{{$prodcategory->image}}" alt="" width="60px" height="60px"></td> --}}
                          @if ($prodcategory->featured==1)
                          <td>featured</td>
                          @else
                          <td>not featured</td>
                          @endif
-                         {{-- <td>{{$prodcategory->dis_order}}</td> --}}
+
+                         @if ($prodcategory->trending==1)
+                         <td>trending</td>
+                         @else
+                         <td>not trending</td>
+                         @endif
+
                          <td>{{$prodcategory->status}}</td>
                          <td><a href="{{ route('edit.prodcat',$prodcategory->id)}}"><button class="btn btn-info">edit</button></a></td>
                          <td><a href="{{ route('prodcatdetails',$prodcategory->id)}}"><button class="btn btn-dark">detials</button></a></td>

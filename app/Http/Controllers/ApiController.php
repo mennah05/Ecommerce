@@ -433,7 +433,7 @@ class ApiController extends Controller
             $data->customer_id = $cust_id;
             $data->unit_id = $item->unit_id;
             $data->quantity = $item->quantity;
-            $data->amount = $unit->offer_price;   ///offerprice on null
+            $data->amount = $unit->offer_price;  
 
             $data->save();
             cart::where('id', $item->id)->delete();

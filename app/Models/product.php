@@ -17,4 +17,10 @@ class product extends Model
     {
         return $this->belongsTo(product_category::class, 'product_category', 'id');
     }
+
+    // public function Unit()
+    // {
+    //     return $this->belongsTo(unit::class, 'prod_id', 'id');
+    // }
+
 }

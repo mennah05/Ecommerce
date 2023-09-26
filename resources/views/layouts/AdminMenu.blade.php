@@ -12,7 +12,7 @@
   <center>
     <span class="logo-icon font-weight-light mr-2">
 
-      <img src="{{ asset('admin/img/logo/logo.png')}}" alt="AdminLTE Logo" style="width: 50%;">
+      <img src="{{ asset('homeweb/images/Logo-main.png')}}" alt="AdminLTE Logo" style="width: 50%;">
 
     </span>
   </center>

@@ -50,6 +50,11 @@
                                         <input type="text" id="edunitop" class="form-control" value="{{$uni->offer_price}}">
                                         <div class="unitoperr" style="color: red; font-size: 14px; "></div>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Default *</label>
+                                        <input type="checkbox" value="1" id="eddefault">
+                                        <div class="deferror" style="color: red; font-size: 14px; "></div>
+                                    </div>
                                     <div> <label>Status*</label>
                                         <select id="unistatus"
                                             style="width: 100%;padding:10px;border: 1px solid #ced4da;border-radius: 0.25rem;"
@@ -99,6 +104,7 @@
             var name = $('input#edunitname').val();
             var price = $('input#edunitprice').val();
             var offer_price = $('input#edunitop').val();
+            var default = $('#eddefault').val();
             var status = $('select#unistatus').val();
 
             if (name == '') {
@@ -147,12 +153,19 @@
                 });
             $('.unitoperr').hide();
 
+            if ($('#eddefault').prop('checked')) {
+                var def_item = 1;
+            } else {
+                var def_item = 0;
+            }
+
 
             data = new FormData();
             data.append('unid', id);
             data.append('edunitname', name);
             data.append('edunitprice', price);
             data.append('edunitop', offer_price);
+            data.append('def_item', def_item);
             data.append('unistatus', status);
 
             data.append('_token', '{{ csrf_token() }}');
@@ -179,13 +192,13 @@
                             confirmButtonText: 'OK'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.href = '/units/' + '{{$uni->prod_id}}';
+                                window.location.href = window.location.href;
                             }
                         })
                     }
                 }
             })
-
         }
+
     </script>
 @endsection
