@@ -38,7 +38,7 @@
                     <div class="col-md-4 col-xl-3">
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h4>Disaese Category</h4>
+                                <h4>Disease Category</h4>
 
                                 <p>categories</p>
                             </div>

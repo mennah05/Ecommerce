@@ -6,7 +6,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="trending-products-dv">
-					<h4 class="mb-0 trending-text">Trending Products</h4>
+					<h4 class="mb-0 trending-text">Trending Product categories</h4>
+                    {{-- try to show products --}}
 					{{-- <form class="option-select-product" action="">
 						<select name="products" id="products">
 							<option value="volvo">Sort By</option>
@@ -27,7 +28,7 @@
 							<h5 class="mb-0 product-name">{{$trndprod->title_eng}}</h5>
 
 						</div>
-						
+
 					</div>
 				</div>
 			</div>

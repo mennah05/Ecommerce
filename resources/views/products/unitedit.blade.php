@@ -52,7 +52,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Default *</label>
-                                        <input type="checkbox" value="1" id="eddefault">
+                                        <input type="checkbox" value="1" id="eddefault" @if ($uni->default==1) checked @endif>
                                         <div class="deferror" style="color: red; font-size: 14px; "></div>
                                     </div>
                                     <div> <label>Status*</label>
@@ -98,13 +98,16 @@
 
 
 
+
     <script>
         function EditUnit() {
+
+
             var id = $('input#unid').val();
             var name = $('input#edunitname').val();
             var price = $('input#edunitprice').val();
             var offer_price = $('input#edunitop').val();
-            var default = $('#eddefault').val();
+            // var default = $('#eddefault').val();
             var status = $('select#unistatus').val();
 
             if (name == '') {
@@ -153,6 +156,8 @@
                 });
             $('.unitoperr').hide();
 
+
+
             if ($('#eddefault').prop('checked')) {
                 var def_item = 1;
             } else {
@@ -198,6 +203,7 @@
                     }
                 }
             })
+
         }
 
     </script>

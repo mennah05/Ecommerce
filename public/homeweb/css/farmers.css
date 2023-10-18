@@ -1,3 +1,11 @@
+.delete-icon i {
+    color: #FF0000;
+    font-size: 22px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+}
+/* ================== */
 /* .carousel-item{
   position: relative;
 } */
@@ -23,7 +31,7 @@
 	font-weight: 400;
 }
 .shop-dv-heading{
-	padding: 60px 0px 40px 0px;
+	padding: 30px 0px 20px 0px;
 }
 .disese-img{
 	border-radius: 10px;
@@ -319,10 +327,14 @@
 	margin: auto;
 }
 .address-box{
-	padding: 20px;
-	display: flex;
 	justify-content: space-between;
 	border: 1px solid #000;
+}
+.address-boxs{
+    display: flex;
+    justify-content: space-between;
+	border: 1px solid #000;
+    padding: 20px;
 }
 .user-name-address{
 	font-weight: 400;
@@ -519,7 +531,7 @@
 	color: #A60000;
 	border-radius: 0px !important;
 	padding: 8px 30px !important;
-	margin-left: 15px;
+	margin-right: 15px;
 	border: 1px solid #A60000 !important;
 }
 .cart-btn:hover{
@@ -726,6 +738,23 @@ footer i:hover{
 	justify-content: space-between;
 	align-items: center;
 }
+.order-box-fl{
+	background: #A60000;
+	padding: 9px 20px;
+    color: #fff;
+}
+.mn{
+	display: flex;
+	padding: 20px;
+}
+.id-order{
+	font-size: 14px;
+	font-weight: 400;
+}
+.checkout-page .address-boxs {
+    width: 500px;
+    margin: auto;
+}
 /* responsive style  */
 @media (min-width:2000px) {
 	.container-main{
@@ -888,8 +917,20 @@ footer i:hover{
         width: 100%;
         height: 160px;
     }
+    .checkout-page .address-boxs {
+        width: 100%;
+    }
 }
 @media (max-width:450px) {
+    .address-boxs {
+        display: block;
+        position: relative;
+    }
+    .addrs-tick{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
 	.banner-main-text {
     font-size: 17px;
 		padding-bottom: 8px;
@@ -994,5 +1035,17 @@ footer i:hover{
     padding: 8px 75px !important;
 	}
 
+    .photos-txt span {
+        font-size: unset;
+        color: #c6a87d;
+    }
 
+
+}
+.photos-txt span {
+    font-size: unset !important;
+	color: #A60000;
+}
+.galler-box{
+    cursor: pointer;
 }

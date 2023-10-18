@@ -25,7 +25,11 @@
 
     <!-- Sidebar -->
 
-
+<style>
+    .sidebar .nav-item i{
+        margin-right: 15px;
+    }
+</style>
 
     <div class="sidebar" style="overflow-y: hidden;">
 
@@ -64,7 +68,7 @@
                 @else
                 <a href="/admin-dashboard" class="nav-link" style="color: white;">
                 @endif
-                  <i class="nav-icon fas fa-th"></i>
+                <i class="fas fa-home"></i>
                   <p>
                     Dashboard
 
@@ -72,43 +76,17 @@
                 </a>
               </li>
 
-
-              {{-- <li class="nav-item">
-                  @if($header=='Users')
-            <a href="#" class="nav-link active" style="color: white;">
-              @else
-              <a href="#" class="nav-link" style="color: white;">
-              @endif
-              <i class="nav-icon fa fa-users"></i>
-              <p>
-                Users
-
-                <i class="fas fa-angle-left right"></i>
-
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/users" class="nav-link" style="color: white;">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p> Active</p>
-
+              <li class="nav-item" >
+                @if($header=='ban')
+                <a href="/banner" class="nav-link active" style="color: white;">
+                @else
+                <a href="/banner" class="nav-link" style="color: white;">
+                @endif
+                <i class="fas fa-images"></i>           <p>
+                    Banner
+                  </p>
                 </a>
-
               </li>
-              <li class="nav-item">
-                <a href="/blocked-users" class="nav-link" style="color: white;">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Blocked</p>
-                  <span class="badge badge-info right" style="background-color: green;"></span>
-                </a>
-
-              </li>
-
-            </ul>
-          </li> --}}
-
-
 
 
 
@@ -118,7 +96,7 @@
                 @else
                 <a href="/disease-category" class="nav-link" style="color: white;">
                 @endif
-                  <i class="nav-icon fa fa-gift"></i>
+                <i class="fas fa-boxes"></i>
                   <p>
                     Disease Category
                   </p>
@@ -131,7 +109,7 @@
                 @else
                 <a href="/disease" class="nav-link" style="color: white;">
                 @endif
-                  <i class="nav-icon fa fa-gift"></i>
+                <i class="fas fa-tablets"></i>
                   <p>
                     Disease
                   </p>
@@ -144,7 +122,7 @@
                 @else
                 <a href="/product-category" class="nav-link" style="color: white;">
                 @endif
-                  <i class="nav-icon fa fa-gift"></i>
+                <i class="fas fa-boxes"></i>
                   <p>
                     Product Category
                   </p>
@@ -158,7 +136,7 @@
                 @else
                 <a href="/products" class="nav-link" style="color: white;">
                 @endif
-                  <i class="nav-icon fa fa-gift"></i>
+                <i class="nav-icon fas fa-th"></i>
                   <p>
                     Products
                   </p>
@@ -166,17 +144,18 @@
               </li>
 
               <li class="nav-item" >
-                @if($header=='ban')
-                <a href="/banner" class="nav-link active" style="color: white;">
+                @if($header=='order')
+                <a href="/orders" class="nav-link active" style="color: white;">
                 @else
-                <a href="/banner" class="nav-link" style="color: white;">
+                <a href="/orders" class="nav-link" style="color: white;">
                 @endif
-                  <i class="nav-icon fa fa-gift"></i>
+                <i class="fas fa-list"></i>
                   <p>
-                    Banner
+                    Orders
                   </p>
                 </a>
               </li>
+
 
 
 

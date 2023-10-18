@@ -42,6 +42,15 @@
                             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                                 placeholder="Phone Number" name="mobile" value="{{ old('mobile') }}">
                         </div>
+                        <span class="text-danger">
+                            @error('email')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="Email" name="email" value="{{ old('email') }}">
+                        </div>
 
                         <span class="text-danger">
                             @error('password')

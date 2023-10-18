@@ -28,8 +28,13 @@
 	</div>
 	<!-- slider end  -->
 	<!-- shop disease  -->
+    <div class="container-main mt-3">
+        <div class="row" id="prodiv">
+        </div>
+    </div>
 	<div class="container-main">
 		<div class="space-dv">
+
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="shop-dv-heading">
@@ -52,6 +57,30 @@
 						<a href="{{ route('disease')}}" class="view-all-btn primary-bg btn text-white">Shop By Disease <i class="ri-arrow-right-s-line"></i></a>
 					</div>
 				</div>
+			</div> <hr>
+
+            <div class="row">
+				<div class="col-lg-12">
+					<div class="shop-dv-heading">
+						<h3 class="mb-0 shop-text text-center"> Featured Disease Category</h3>
+					</div>
+				</div>
+                @foreach ($featdiseasecat as $featdiscat)
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+					<div class="disese-box">
+						<a href="{{route('diseasecat',$featdiscat->id)}}">
+							<img class="disese-img" src="{{$featdiscat->image}}" alt="">
+							<h5 class="mb-0 disease-name">{{$featdiscat->title_eng}}</h5>
+						</a>
+					</div>
+				</div>
+                @endforeach
+
+				{{-- <div class="col-lg-12">
+					<div class="veiw-dv">
+						<a href="{{ route('disease')}}" class="view-all-btn primary-bg btn text-white">Shop By Disease <i class="ri-arrow-right-s-line"></i></a>
+					</div>
+				</div> --}}
 			</div>
 		</div>
 	</div>

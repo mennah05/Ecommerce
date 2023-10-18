@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('district');
             $table->string('state');
             $table->string('pincode');
-            $table->string('landmark');
-            $table->string('default');
+            $table->string('landmark');   //sometimes nullable
+            $table->string('default')->default(0);  //need to migrate here
             $table->string('status')->default('active');
             $table->timestamps();
         });

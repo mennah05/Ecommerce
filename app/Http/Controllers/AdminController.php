@@ -16,10 +16,7 @@ class AdminController extends Controller
     public function home()
     {
         return view('admin.LoginPage');
-       // print_r(bcrypt("admin"));
     }
-
-
 
     public function login(Request $req)
     {
@@ -62,25 +59,26 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-
        $header="Dashboard";
         return view('admin.Dashboard',['header'=>$header]);
     }
+
+
 
     public function admin_profile()
     {
         $adid=Auth::guard('admin')->user()->id;
         $adm=admin_detail::where('id',$adid)->first();
-           $header="Dashboard";
-        return view('admin.AdminProfile',['adm'=>$adm,'header'=>$header]);
-    }
-    public function edit_admin_profile()
-    {
-        $adid=Auth::guard('admin')->user()->id;
-        $adm=admin_detail::where('id',$adid)->first();
         $header="Dashboard";
-        return view('admin.AdminProfileEdit',['adm'=>$adm,'header'=>$header]);
+        return view('admin.adminprofile',['adm'=>$adm,'header'=>$header]);
     }
+    // public function edit_admin_profile()
+    // {
+    //     $adid=Auth::guard('admin')->user()->id;
+    //     $adm=admin_detail::where('id',$adid)->first();
+    //     $header="Dashboard";
+    //     return view('admin.AdminProfileEdit',['adm'=>$adm,'header'=>$header]);
+    // }
 
      public function admin_profile_update(Request $req)
     {
@@ -102,12 +100,13 @@ class AdminController extends Controller
 
             admin_detail::where('id',$adid)->update([
                 'name'=>$req->cname,
+                'username'=>$req->username,
                 'mobile'=>$req->cmobile,
                 'mail_id'=>$req->cmail,
                 'profile_image'=>$new_name,
-                'facebook'=>$req->cfb,
-                'instagram'=>$req->cins,
-                'twitter'=>$req->ctwitter,
+                // 'facebook'=>$req->cfb,
+                // 'instagram'=>$req->cins,
+                // 'twitter'=>$req->ctwitter,
             ]) ;
             $data['success']="success";
 
@@ -115,10 +114,12 @@ class AdminController extends Controller
 
     }
 
+
+
     public function change_password()
     {
         $header="Settings";
-        return view('admin.ChangePassword',['header'=>$header]);
+        return view('admin.changepass',['header'=>$header]);
 
     }
     public function password_update(Request $req)
@@ -141,9 +142,6 @@ class AdminController extends Controller
         echo json_encode($data);
 
     }
-
-
-
 
 
 }

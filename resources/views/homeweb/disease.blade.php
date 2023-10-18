@@ -1,6 +1,10 @@
 @extends('homeweb.layouts.master')
 @section('content')
 
+        <div class="container-main mt-4">
+            <div class="row" id="prodiv">
+            </div>
+        </div>
 
 	<!-- shop disease  -->
 	<div class="container-main">

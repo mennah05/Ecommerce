@@ -282,7 +282,7 @@
                     if (data['success']) {
 
                         Swal.fire({
-                            title: 'Category Submitted  Successfully',
+                            title: 'Submited Successfully',
                             // text: "You won't be able to revert this!",
                             icon: 'success',
                             // showCancelButton: true,

@@ -7,7 +7,7 @@
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 col-sm-6  mb-4 mb-md-0">
                 <div class="box-footer">
-                    <a href="./index.html">
+                    <a href="{{ route('index') }}">
                         <img class="logo-footer" src="{{asset('homeweb/images/Logo-main.png')}}" alt="">
                     </a>
                 </div>
@@ -59,10 +59,25 @@
     </div>
     <!-- Copyright -->
 </footer>
-
-<script src="./js/main.js"></script>
+{{-- <script src="{{ asset('admin/plugins/jquery/jquery.min.js')}}"></script> --}}
+<script src="{{asset('homeweb/js/main.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+
+    {{-- <script>
+         if ($('#defadd').prop('checked',true)) {
+                var defaultadd = 1;
+            } else {
+                var defaultadd = 0;
+            }
+    </script> --}}
+
+
 </body>
 </html>

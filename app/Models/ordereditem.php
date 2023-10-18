@@ -11,4 +11,9 @@ class ordereditem extends Model
 
     protected $guarded = [];
 
+    public function GetUnit()
+    {
+        return $this->belongsTo(unit::class, 'unit_id', 'id');
+    }
+
 }

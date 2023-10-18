@@ -29,6 +29,12 @@
 				</div>
 			</div>
 			@foreach ($pc_products as $pcprod)
+            @php
+                        $unitpr = DB::table('units')
+                            ->where('prod_id', $pcprod->id)
+                            ->where('default', '1')
+                            ->first();
+                    @endphp
             <div class="col-lg-3 col-md-4 col-sm-6 col-6">
 				<div class="product-box">
 					<a href="{{ route('product.single',$pcprod->id) }}"><div class="prdct-img-box">
@@ -37,7 +43,7 @@
 					<div class="price-detail-dv">
 						<div class="price-dv">
 							<h5 class="mb-0 product-name">{{$pcprod->name_english}}</h5>
-							<h5 class="mb-0 product-price">2000</h5>
+							<h5 class="mb-0 product-price">₹ {{$unitpr->offer_price}}</h5>
 						</div>
 						<div class="btn-cart">
 							<a href="{{ route('product.single',$pcprod->id) }}" class="add-to-cart primary-bg btn text-white">View Details</a>

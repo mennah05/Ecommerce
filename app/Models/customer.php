@@ -14,4 +14,10 @@ class customer extends Authenticatable
     use HasFactory, HasApiTokens;
 
     protected $guarded = [];
+
+    public function GetCustAdd()
+    {
+        // return $this->belongsTo(Custaddresss::class, 'cust_id', 'id');
+        return $this->belongsTo(Custaddresss::class ,'id','cust_id');
+    }
 }

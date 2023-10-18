@@ -45,7 +45,7 @@ function showTab(tabIndex) {
 	// Show the selected tab content
 	tabContents[tabIndex].classList.add('active');
 }
-// image changing 
+// image changing
 
 
 

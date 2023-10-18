@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('reference_id');
             $table->string('payment_type');
             $table->string('order_status')->default('pending');
+            $table->string('payment_status')->default('pending');  ///migrate
             $table->string('ordered_on')->nullable();
             $table->string('delivered_on')->nullable();
             $table->timestamps();

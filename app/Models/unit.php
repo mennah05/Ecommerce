@@ -13,8 +13,8 @@ class unit extends Model
 
     protected $table = 'units';
 
-    // public function Unit()
-    // {
-    //     return $this->belongsTo(product::class, 'prod_id', 'id');
-    // }
+    public function GetProd()
+    {
+        return $this->belongsTo(product::class, 'prod_id', 'id');
+    }
 }

@@ -10,4 +10,12 @@ class cart extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function GetUnit()
+    {
+        return $this->belongsTo(unit::class, 'unit_id', 'id');
+    }
+
+
+
 }
