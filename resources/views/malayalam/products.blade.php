@@ -1,4 +1,4 @@
-@extends('homeweb.layouts.master')
+@extends('malayalam.layouts.master')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
 @section('content')
     <!-- products  -->

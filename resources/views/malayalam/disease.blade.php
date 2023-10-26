@@ -1,4 +1,4 @@
-@extends('homeweb.layouts.master')
+@extends('malayalam.layouts.master')
 @section('content')
 
         <div class="container-main mt-4">

@@ -1,4 +1,4 @@
-@extends('homeweb.layouts.master')
+@extends('malayalam.layouts.master')
 @section('content')
 
 	<!-- products  -->

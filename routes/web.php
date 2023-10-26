@@ -203,6 +203,8 @@ Route::get('prod-cat-single/{id}', [MalayalamController::class, 'prodCatSingle']
 Route::get('trending-product', [MalayalamController::class, 'trndproduct'])->name('trending.product');
 Route::get('featured-product', [MalayalamController::class, 'featrdproduct'])->name('featured.product');
 
-// Route::get('about-section', [MalayalamController::class, 'about'])->name('about');
+Route::get('about-section', [MalayalamController::class, 'about'])->name('about.mal');
+Route::get('contact-mal', [MalayalamController::class, 'contact'])->name('contact.mal');
+
 
 

@@ -88,4 +88,12 @@ class MalayalamController extends Controller
         $featrdprods = product_category::where('featured', '1')->where('status', 'active')->get();
         return view('malayalam.featrdproduct', compact('featrdprods'));
     }
+
+    public function about(){
+        return view('malayalam.about');
+    }
+
+    public function contact(){
+        return view('malayalam.contact');
+    }
 }
