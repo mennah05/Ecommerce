@@ -51,7 +51,16 @@ function showTab(tabIndex) {
 
 function changeImage(newImage) {
 	document.getElementById('main-image').src = newImage;
+
 }
 
+const toggleButton = document.getElementById('toggleButton');
+const myElement = document.getElementById('myElement');
 
-
+toggleButton.addEventListener('click', function () {
+	if (myElement.style.display === 'block') {
+		myElement.style.display = 'none';
+	} else {
+		myElement.style.display = 'block';
+	}
+});

@@ -23,18 +23,20 @@
                             class="ri-menu-2-line text-white"></i></div>
                 </div>
             </div>
+
             <div class="serach-box">
                 <div class="input-group">
-                    <input style="border-radius: 0.25rem;" type="search" class="form-control" placeholder="Search..." id="pid"  onkeyup="ProdSearch(this.value)">
+                    <input style="border-radius: 0.25rem;" type="search" class="form-control" placeholder="Search..."
+                        id="pid" onkeyup="ProdSearch(this.value)">
 
 
 
-						<!-- Options are added directly in the HTML -->
-                        {{-- @php
+                    <!-- Options are added directly in the HTML -->
+                    {{-- @php
                             $products=DB::table('products')->where('status','active')->get();
                         @endphp
                         @foreach ($products as $product) --}}
-                        <div id="subOptions">
+                    <div id="subOptions">
                         {{-- <div class="img-with-name">
 							<a href="{{ route('product.single',$product->id) }}">
 								<img class="p-img-search" src="{{$product->image1}}" alt="">
@@ -42,11 +44,18 @@
 							</a>
 						</div> --}}
                     </div>
-                        {{-- @endforeach --}}
+                    {{-- @endforeach --}}
 
 
                 </div>
             </div>
+
+            <select class="select-language" id="abc" onchange="lang1(this.value)">
+                <option value="1">English</option>
+                <option value="2">Malayalam</option>
+            </select>
+
+
         </div>
     </header>
     <!-- header end  -->
@@ -59,10 +68,14 @@
                 <li><a class="active" href="{{ route('product') }}">Shop By Product</a></li>
                 <li><a class="active" href="{{ route('about') }}">About</a></li>
                 <li><a class="active" href="{{ route('contact') }}">Contact Us</a></li>
-                <li><a class="active" href="./profile.html">Profile</a></li>
-                <li><a class="active" href="./cart.html">Cart</a></li>
-                <li><a class="active" href="./signin.html">Sign in</a></li>
-                <li><a class="active" href="./signup.html">Sign up</a></li>
+                <li><a class="active" href="{{ route('profile') }}">Profile</a></li>
+                <li><a class="active" href="{{ route('cart') }}">Cart</a></li>
+                <li><a class="active" href="{{ route('signin') }}">Sign in</a></li>
+                <li><a class="active" href="{{ route('signup') }}">Sign up</a></li>
+                <select class=" mobl-width" name="" id="">
+                    <option value="">English</option>
+                    <option value="">Malayalam</option>
+                </select>
             </ul>
         </div>
         <div class="d-inline closse" onclick="toggleCartt()"><i class="ri-close-circle-line"></i></div>
@@ -91,10 +104,10 @@
 
             });
 
-            if(search === ''){
+            if (search === '') {
                 $('#subOptions').hide();
 
-            }else{
+            } else {
                 $('#subOptions').show();
 
             }
@@ -108,23 +121,53 @@
         }
 
 
+        var currentUrl = window.location.pathname;
 
+        // Define a mapping of URLs to option values
+        var urlToOptionValue = {
+            '/': '1',
+            '/home': '2',
+            // Add more URL mappings as needed
+        };
 
+        // Set the selected option based on the current URL
+        var languageSelect = document.getElementById('abc');
+        if (urlToOptionValue[currentUrl]) {
+            languageSelect.value = urlToOptionValue[currentUrl];
+        }
+
+        function lang1(selectedValue) {
+            if (selectedValue === '1') {
+                // Handle the English selection
+                window.location.href = '/'; // Replace with your actual URL
+            } else if (selectedValue === '2') {
+                // Handle the Malayalam selection
+                window.location.href = '/home'; // Replace with your actual URL
+            }
+        }
     </script>
-     <script>
+
+
+
+
+
+
+
+
+    <script>
         const searchInput = document.getElementById('pid');
-		const subOptions = document.getElementById('subOptions');
+        const subOptions = document.getElementById('subOptions');
 
-		// Event listener for input focus
-		searchInput.addEventListener('focus', () => {
-			subOptions.style.display = 'none';
-		});
+        // Event listener for input focus
+        searchInput.addEventListener('focus', () => {
+            subOptions.style.display = 'none';
+        });
 
-		// Event listener for input blur
-		searchInput.addEventListener('blur', () => {
-			// Delay hiding sub-options to handle click events on sub-options
-			setTimeout(() => {
-				subOptions.style.display = 'none';
-			}, 200);
-		});
+        // Event listener for input blur
+        searchInput.addEventListener('blur', () => {
+            // Delay hiding sub-options to handle click events on sub-options
+            setTimeout(() => {
+                subOptions.style.display = 'none';
+            }, 200);
+        });
     </script>

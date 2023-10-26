@@ -1,3 +1,39 @@
+<div class="chat-icon" id="toggleButton">
+    <i class="ri-message-2-line"></i>
+</div>
+<div id="myElement" class="chat-box">
+    <div class="chat-heading">
+        <div class="img-prfl">
+            <img class="profile-chat" src="{{asset('admin/img/user.avif')}}" alt="">
+        </div>
+        <div class="chat-profl-name">
+            <h6 class="chat-user-name mb-0 text-white">Shammaz</h6>
+            <p class="status-txt mb-0 text-white">Online</p>
+        </div>
+    </div>
+    <div class="chat-content mt-5 mb-5">
+        <h5 class="left-chat">Hi there👋</h5>
+        <h5 class="left-chat">How can i help you?</h5>
+        <h5 class="right-chat">Hi</h5>
+        <h5 class="right-chat">I need medicine for this disease</h5>
+        <h5 class="left-chat">How can I help you today?</h5>
+        <h5 class="right-chat">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum eius vitae voluptas quos ducimus ea.</h5>
+        <h5 class="left-chat">How can i help you?</h5>
+        <h5 class="right-chat">Hi</h5>
+        <h5 class="right-chat">I need medicine for this disease</h5>
+        <h5 class="left-chat">How can I help you today?</h5>
+        <div class="chat-add-box mt-3">
+            <form>
+                <div class="chat-add">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Type your Message here....">
+                </div>
+            </form>
+            <i class="ri-send-plane-2-line"></i>
+        </div>
+    </div>
+</div>
+
+
   <!-- footer section  -->
   <footer class="text-lg-start text-lg-start mt-4">
     <!-- Grid container -->

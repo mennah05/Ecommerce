@@ -11,8 +11,8 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="disease-detail">
-                        <h3 class="mb-0 desease-name">{{ $dis->title_english }}</h3>
-                        <p class="mb-0 sub-txt-desease">{!! $dis->common_procedure_eng !!}</p>
+                        <h3 class="mb-0 desease-name">{{ $dis->title_malayalam }}</h3>
+                        <p class="mb-0 sub-txt-desease">{!! $dis->common_procedure_mal !!}</p>
                     </div>
                 </div>
             </div>
@@ -36,18 +36,18 @@
                 @endphp
                 <div class="col-lg-3 col-md-4 mb-4 col-sm-6 col-6">
                     <div class="product-box">
-                        <a href="{{ route('product.single', $product->prod_id) }}">
+                        <a href="{{ route('prod.single', $product->prod_id) }}">
                             <div class="prdct-img-box">
                                 <img class="product-image" src="{{ asset($product->GetName->image1) }}" alt="">
                             </div>
                         </a>
                         <div class="price-detail-dv">
                             <div class="price-dv">
-                                <h5 class="mb-0 product-name">{{ $product->GetName->name_english }}</h5>
-                                <h5 class="mb-0 product-price">₹ {{$unitpr->offer_price}}</h5>
+                                <h5 class="mb-0 product-name">{{ $product->GetName->name_malayalam }}</h5>
+                                <h5 class="mb-0 product-price">₹ {{ $unitpr->offer_price }}</h5>
                             </div>
                             <div class="btn-cart">
-                                <a href="{{ route('product.single', $product->prod_id) }}"
+                                <a href="{{ route('prod.single', $product->prod_id) }}"
                                     class="add-to-cart primary-bg btn text-white">View Details</a>
                             </div>
                         </div>
@@ -72,18 +72,17 @@
                 </div>
                 @foreach ($disgallary as $disgal)
                     <div class="col-lg-3 col-md-4 mb-4">
-                        <a onclick="readmore('{{ $disgal->title_eng }}','{{ $disgal->description_eng }}')">
-                        <div class="galler-box" data-toggle="modal" data-target="#loginModal">
-                            <img src="{{ asset($disgal->file) }}" alt="">
-                            <h5 class="btn text-white primary-bg mt-1"
-                                >Read
-                                more</h5>
-                            </a>
-                        </div>
+                        <a onclick="readmore('{{ $disgal->title_mal }}','{{ $disgal->description_mal }}')">
+                            <div class="galler-box" data-toggle="modal" data-target="#loginModal">
+                                <img src="{{ asset($disgal->file) }}" alt="">
+                                <h5 class="btn text-white primary-bg mt-1">Read
+                                    more</h5>
+                        </a>
                     </div>
-                @endforeach
             </div>
+            @endforeach
         </div>
+    </div>
     </div>
 
 
@@ -99,12 +98,13 @@
                 @foreach ($disvideo as $disvid)
                     <div class="col-lg-3 col-md-4 mb-4">
                         <div class="galler-box">
-                            <iframe width="100%" height="315" src="{{ asset($disvid->url_eng) }}"
+                            <iframe width="100%" height="315" src="{{ asset($disvid->url_mal) }}"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen></iframe>
-                            <a onclick="readmorevid('{{ $disvid->title_eng }}','{{ $disvid->description_eng }}')" class="btn text-white primary-bg" data-toggle="modal"
-                                data-target="#loginModalvideo">Read more</a>
+                            <a onclick="readmorevid('{{ $disvid->title_mal }}','{{$disvid->description_mal}}')"
+                                class="btn text-white primary-bg" data-toggle="modal" data-target="#loginModalvideo">Read
+                                more</a>
                         </div>
                     </div>
                 @endforeach
@@ -132,19 +132,19 @@
     </div>
 
 
-        <div style="z-index: 1200;" class="modal fade modal-home modal-menu" id="loginModalvideo" tabindex="-1"
-            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" style="padding: 0px;" role="document">
-                <div style="width: 100%;border-radius: 10px;margin: auto;padding: 10px;"
-                    class="modal-content login-modal-home-p">
-                    <i class="ri-close-circle-line close" data-dismiss="modal" aria-label="Close"></i>
-                    <div class="modal-body modal-loginform pt-0">
-                        <h2 class="text-center" id="vidtitle"></h2>
-                        <p class="mb-0  descriptn-gal" id="viddisc"></p>
-                    </div>
+    <div style="z-index: 1200;" class="modal fade modal-home modal-menu" id="loginModalvideo" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="padding: 0px;" role="document">
+            <div style="width: 100%;border-radius: 10px;margin: auto;padding: 10px;"
+                class="modal-content login-modal-home-p">
+                <i class="ri-close-circle-line close" data-dismiss="modal" aria-label="Close"></i>
+                <div class="modal-body modal-loginform pt-0">
+                    <h2 class="text-center" id="vidtitle"></h2>
+                    <p class="mb-0  descriptn-gal" id="viddisc"></p>
                 </div>
             </div>
         </div>
+    </div>
 
 
 
@@ -160,8 +160,7 @@
         }
 
 
-        function readmorevid(titlevid,disvid)
-        {
+        function readmorevid(titlevid, disvid) {
 
             $('#loginModal').addClass('show');
             $('#loginModal').removeClass('fade');

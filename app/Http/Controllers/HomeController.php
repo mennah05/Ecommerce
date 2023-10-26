@@ -139,7 +139,6 @@ class HomeController extends Controller
     public function trndproduct()
     {
         $trendingprods = product_category::where('trending', '1')->where('status', 'active')->get();
-        // $trendingprod
         return view('homeweb.trndproduct', compact('trendingprods'));
     }
     public function featrdproduct()

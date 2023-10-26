@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\DeseaseController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MalayalamController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -130,18 +131,18 @@ Route::get('trending-products', [HomeController::class, 'trndproduct'])->name('t
 Route::get('featured-products', [HomeController::class, 'featrdproduct'])->name('feat.product');
 
 Route::get('about', [HomeController::class, 'about'])->name('about');
+
 Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('save-contact', [HomeController::class, 'SaveContact'])->name('save.contact');
 Route::post('get-price', [HomeController::class, 'getprice'])->name('getprice');
+
+
 
 
 Route::post('prod-search', [HomeController::class, 'ProdSearch'])->name('search');
 
 
 Route::post('add-to-cart', [CartController::class, 'AddtoCart'])->name('addtocart');
-
-
-
 
 
 
@@ -166,9 +167,6 @@ Route::group(['middleware' => 'customer_auth'], function () {                   
     Route::post('sub-quantity', [CartController::class, 'SubQuantity'])->name('subqty');
 
 
-
-
-
     Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
     Route::get('address', [CartController::class, 'address'])->name('address');
     Route::post('save-address', [CartController::class, 'SaveAddress'])->name('save.address');
@@ -178,8 +176,33 @@ Route::group(['middleware' => 'customer_auth'], function () {                   
     Route::post('address-default', [CartController::class, 'CustAddrsDef'])->name('CustAddrsDef');
 
 
-
-
-
     Route::post('place-order', [CartController::class, 'PlaceOrder'])->name('place.order');
 });
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////     Malayalam sec      /////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+Route::get('/home', [MalayalamController::class, 'index'])->name('index.mal');
+
+Route::get('shopby-disease', [MalayalamController::class, 'disease'])->name('dis');
+Route::get('dis-single/{id}', [MalayalamController::class, 'disSingle'])->name('dis.single');
+
+Route::get('dis-category-single/{id}', [MalayalamController::class, 'diseasecat'])->name('discat');
+
+
+Route::get('shopby-product', [MalayalamController::class, 'product'])->name('prod');
+Route::get('prod-single/{id}', [MalayalamController::class, 'prodSingle'])->name('prod.single');
+Route::get('prod-cat-single/{id}', [MalayalamController::class, 'prodCatSingle'])->name('prodcateg.single');
+Route::get('trending-product', [MalayalamController::class, 'trndproduct'])->name('trending.product');
+Route::get('featured-product', [MalayalamController::class, 'featrdproduct'])->name('featured.product');
+
+// Route::get('about-section', [MalayalamController::class, 'about'])->name('about');
+
+

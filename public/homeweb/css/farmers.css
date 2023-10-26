@@ -755,6 +755,22 @@ footer i:hover{
     width: 500px;
     margin: auto;
 }
+.mobl-width{
+	width: 100%;
+	border-radius: 10px;
+	display: none;
+}
+
+.select-language{
+	padding: 5px 5px;
+	background: #A60000;
+	border: 1px solid #fff;
+	color: #fff;
+	display: table;
+	margin-left: auto;
+	margin-top: -35px;
+}
+
 /* responsive style  */
 @media (min-width:2000px) {
 	.container-main{
@@ -791,6 +807,20 @@ footer i:hover{
 	.navbar-main-dv .nav-items{
 		display: none;
 	}
+    .mobl-width{
+        display: block;
+        padding: 8px 15px;
+        background: #A60000;
+        border: 1px solid #fff;
+        color: #fff;
+        display: table;
+        margin-left: auto;
+        margin-top: 10px;
+    }
+    .select-language{
+		display: none;
+	}
+
 	.disease-name {
     font-size: 20px;
 	}
@@ -1049,3 +1079,5 @@ footer i:hover{
 .galler-box{
     cursor: pointer;
 }
+
+
